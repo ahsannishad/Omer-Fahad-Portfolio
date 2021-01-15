@@ -1,0 +1,21 @@
+{
+  "name": "fahad-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio website with MERN stack",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon index.js"
+  },
+  "keywords": [
+    "Portfolio",
+    "MERN"
+  ],
+  "author": "Musfique Ahsan Nishad",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.11",
+    "nodemailer": "^6.4.17"
+  }
+}
