@@ -118,7 +118,7 @@ function Home() {
 									<div className="row m-3">
 										<div className="col">
 											<input
-												type="tel"
+												type="number"
 												className="form-control"
 												id="number"
 												placeholder="Phone Number"
