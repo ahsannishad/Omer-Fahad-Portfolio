@@ -62,7 +62,6 @@ function Contact() {
 			},
 		});
 	}
-
 	return (
 		<Fragment>
 			<ReactNotification />
@@ -167,7 +166,7 @@ function Contact() {
 									<div className="row form-group">
 										<div className="col">
 											{loading ? (
-												<div className="d-grid gap-2 form-control">
+												<div className="d-grid gap-2">
 													<button
 														className="btn btn-dark text-center  m-2"
 														type="button"

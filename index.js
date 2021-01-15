@@ -74,8 +74,7 @@ app
 					from: process.env.EMAIL, // TODO: email sender
 					to: req.body.email, // TODO: email receiver
 					subject: "Thanks for your Message",
-					text: `Dear, ${req.body.name} I am Omer Fahad from omerfahad.com. Thanks for sending the message. I received your message. 
-					I will contact you very soon.`,
+					text: `Dear, ${req.body.name} I am Omer Fahad from omerfahad.com. Thanks for sending the message. I received your message. I will contact you very soon.`,
 				};
 
 				// Step 3
@@ -134,7 +133,7 @@ app.post("/api/subscribe", (req, res) => {
 			from: process.env.EMAIL, // TODO: email sender
 			to: req.body.email, // TODO: email receiver
 			subject: "Thank You so much for subscribing omerfahad.com!",
-			text: `Hey there, ${req.body.name}, This is Omer Fahad from omerfahad.com. I just wanted to personally thank you for using omerfahad.com and joining our community. We’re glad to have you! If you have any questions about development so far, I’d be more than happy to answer them. Don’t hesitate to reach out if you need any help! Have a good one! -Omer Fahad`,
+			text: `Hey there, ${req.body.name}, This is Omer Fahad from omerfahad.com. I just wanted to personally thank you for using omerfahad.com and joining our community. We’re glad to have you! If you have any questions about development so far or For any inquiry please visit omerfahad.com/contact. Follow on facebook facebook.com/omerbinfahad. Don’t hesitate to reach out if you need any help! Have a good one! -Omer Fahad`,
 		};
 
 		// Step 3
