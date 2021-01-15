@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
 const nodemailer = require("nodemailer");
+const path = require("path");
 
 //Defining App
 const app = express();
@@ -122,21 +123,29 @@ app.post("/api/subscribe", (req, res) => {
 		});
 
 		// Step 2
-		let mailOptions = {
+		let mailOptionsForAdmin = {
 			from: process.env.EMAIL, // TODO: email sender
 			to: process.env.ADMIN_EMAIL, // TODO: email receiver
 			subject: `${req.body.name}, just subscribed to your website `,
-			text: `Fahad, A new user named "${req.body.name}" just subscribed to your website send The user a welcome message or contact him/her soon. Here is the information of the user, Name: ${req.body.name}, Phone Number: ${req.body.number}`,
+			text: `Fahad, A new user named "${req.body.name}" just subscribed to your website send The user a welcome message or contact him/her soon. Here is the information of the user, Name: ${req.body.name}, Phone Number: ${req.body.number}, Email: ${req.body.email}`,
+		};
+
+		let mailOptionsForSubscribers = {
+			from: process.env.EMAIL, // TODO: email sender
+			to: req.body.email, // TODO: email receiver
+			subject: "Thank You so much for subscribing omerfahad.com!",
+			text: `Hey there, ${req.body.name}, This is Omer Fahad from omerfahad.com. I just wanted to personally thank you for using omerfahad.com and joining our community. We’re glad to have you! If you have any questions about development so far, I’d be more than happy to answer them. Don’t hesitate to reach out if you need any help! Have a good one! -Omer Fahad`,
 		};
 
 		// Step 3
-		transporter.sendMail(mailOptions, (err, data) => {
+		transporter.sendMail(mailOptionsForAdmin, (err, data) => {
 			if (err) {
 				console.log(err);
 				res
 					.status(500)
 					.send("Something went wrong while Subscribing to omerfahad.com");
 			} else {
+				transporter.sendMail(mailOptionsForSubscribers);
 				res.send("Subscribed");
 			}
 		});

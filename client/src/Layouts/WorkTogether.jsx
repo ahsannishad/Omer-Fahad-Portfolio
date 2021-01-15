@@ -5,6 +5,7 @@ import envelope from "./../Images/orange-opened-envelope-letter-mail-27.png";
 function WorkTogether() {
 	const [name, setName] = useState("");
 	const [number, setNumber] = useState("");
+	const [email, setEmail] = useState("");
 	const [loading, setLoading] = useState(false);
 
 	function submit(event) {
@@ -12,11 +13,12 @@ function WorkTogether() {
 		setLoading(true);
 
 		axios
-			.post("/api/subscribe", { name, number })
+			.post("/api/subscribe", { name, email, number })
 			.then((res) => {
 				setLoading(false);
 				setNumber("");
 				setName("");
+				setEmail("");
 			})
 			.catch((error) => {
 				console.log(error);
@@ -44,7 +46,7 @@ function WorkTogether() {
 										Subscribe To Get Some Latest Update
 									</p>
 
-									<div class="col">
+									<div className="col">
 										<input
 											type="text"
 											className="form-control"
@@ -56,8 +58,21 @@ function WorkTogether() {
 										/>
 									</div>
 								</div>
-								<div class="row m-3">
-									<div class="col">
+								<div className="row m-3">
+									<div className="col">
+										<input
+											type="email"
+											className="form-control"
+											id="email"
+											placeholder="Email"
+											value={email}
+											onChange={(event) => setEmail(event.target.value)}
+											required
+										/>
+									</div>
+								</div>
+								<div className="row m-3">
+									<div className="col">
 										<input
 											type="tel"
 											className="form-control"
@@ -69,8 +84,9 @@ function WorkTogether() {
 										/>
 									</div>
 								</div>
+
 								<div className="row m-3 text-end">
-									<div class="col ">
+									<div className="col ">
 										{loading ? (
 											<button
 												type="submit"
@@ -84,7 +100,7 @@ function WorkTogether() {
 												type="submit"
 												className="btn btn-warning mb-3 form-control"
 											>
-												<i className="fas fa-paper-plane"></i> Subscrib
+												<i className="fas fa-paper-plane"></i> Subscribe
 											</button>
 										)}
 									</div>
